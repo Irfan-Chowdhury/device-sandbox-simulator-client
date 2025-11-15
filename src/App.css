@@ -1,34 +1,215 @@
-.App {
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #0f172a;
+  color: #fff;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* পুরো layout root */
+.app-root {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  background-color: #111827;
+  border-right: 1px solid #1e293b;
+  padding: 20px;
+}
+
+.sidebar h5 {
+  color: #9ca3af;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.device-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background-color: #1f2937;
+  border: 1px solid #374151;
+  color: #e5e7eb;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.device-btn:hover {
+  background-color: #374151;
+}
+
+.preset-list {
+  margin-top: 30px;
+}
+
+.preset-item {
+  border: 1px solid #374151;
+  border-radius: 6px;
+  color: #9ca3af;
+  padding: 8px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+/* Main area */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #0f172a;
+  
+}
+
+.canvas-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.canvas-title h4 {
+  color: #9ca3af;
+}
+
+.canvas-btns button {
+  border-radius: 6px;
+  padding: 6px 12px;
+  border: none;
+  margin-left: 5px;
+  font-size: 14px;
+}
+
+.btn-clear {
+  background-color: #374151;
+  color: #fff;
+}
+
+.btn-save {
+  background-color: #2563eb;
+  color: #fff;
+}
+
+.canvas {
+  flex: 1;
+  background-color: #111827;
+  border-radius: 10px;
+  border: 1px solid #374151;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.device-display {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.device-display img {
+  width: 160px;
+  height: auto;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Control panel bottom center */
+.control-panel {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 20px;
+  width: 400px;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.control-panel label {
+  color: #9ca3af;
+  font-size: 14px;
 }
 
-.App-link {
-  color: #61dafb;
+.color-options button {
+  width: 55px;
+  height: 25px;
+  border-radius: 6px;
+  border: none;
+  margin-right: 5px;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
+.warm {
+  background: #fbbf24;
+}
+
+.neutral {
+  background: #f3f4f6;
+}
+
+.cool {
+  background: #93c5fd;
+}
+
+.pink {
+  background: #f472b6;
+}
+
+.slider input[type='range'] {
+  width: 100%;
+  appearance: none;
+  height: 6px;
+  background: #374151;
+  border-radius: 6px;
+}
+
+.slider input[type='range']::-webkit-slider-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #60a5fa;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+/* Fan visual */
+.fan {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 5px solid #374151;
+  position: relative;
+  margin: 0 auto 20px auto;
+}
+
+.blade {
+  position: absolute;
+  width: 10px;
+  height: 60px;
+  background-color: #93c5fd;
+  border-radius: 4px;
+  transform-origin: bottom center;
+}
+
+.blade:nth-child(1) {
+  transform: rotate(0deg);
+}
+.blade:nth-child(2) {
+  transform: rotate(120deg);
+}
+.blade:nth-child(3) {
+  transform: rotate(240deg);
+}
+
+@keyframes spin {
   from {
     transform: rotate(0deg);
   }
