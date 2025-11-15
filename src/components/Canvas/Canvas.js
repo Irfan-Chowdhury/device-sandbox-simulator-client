@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Canvas.css";
+import LightControls from "../Light/LightControls";
 
 // const Canvas = ({ activeDevice, fan }) => {
-const Canvas = ({ activeDevice, onClear, onSave, fan }) => {
+const Canvas = ({ activeDevice, onClear, onSave, fan, light }) => {
     const [rotation, setRotation] = useState(0);
 
     useEffect(() => {
@@ -47,6 +48,28 @@ const Canvas = ({ activeDevice, onClear, onSave, fan }) => {
                     </div>
                 )}
 
+                {/* {activeDevice === "light" && (
+                    <LightControls 
+                        power={state.light.power}
+                        brightness={state.light.brightness}
+                        color={state.light.color}
+                    />
+                )} */}
+
+                {/* {activeDevice === "light" && (
+                    <LightControls 
+                        power={light.power}
+                        brightness={light.brightness}
+                        color={light.color}
+                    />
+                )} */}
+
+
+
+
+
+                {/* Fan */}
+
                 {activeDevice === "fan" && (
                     <div className="device-display">
                         <img
@@ -54,8 +77,8 @@ const Canvas = ({ activeDevice, onClear, onSave, fan }) => {
                         className={`fan-image ${fan.power ? "spin" : ""}`}
                         style={{
                             animationDuration: `${2 - fan.speed / 50}s`,
-                            width: "300px",
-                            height: "300px",
+                            width: "250px",
+                            height: "250px",
                             marginBottom: "100px"
                         }}
                         alt="Fan"

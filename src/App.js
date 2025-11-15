@@ -45,6 +45,7 @@ function App() {
           onClear={handleClear}
           onSave={handleSave}
           fan={state.fan}
+          light={state.light}
         />
 
 
