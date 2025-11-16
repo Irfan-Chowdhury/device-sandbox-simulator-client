@@ -32,6 +32,11 @@ function App() {
     alert("Preset Saved!");
   };
 
+    // 👉 নতুন handler
+  const handleDeviceDrop = (deviceType) => {
+    dispatch({ type: "SET_ACTIVE_DEVICE", payload: deviceType });
+  };
+
   return (
     <div className="d-flex app-root">
       {/* SIDEBAR */}
@@ -46,6 +51,7 @@ function App() {
           onSave={handleSave}
           fan={state.fan}
           light={state.light}
+          onDeviceDrop={handleDeviceDrop}
         />
 
 

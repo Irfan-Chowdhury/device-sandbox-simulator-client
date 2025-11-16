@@ -34,36 +34,11 @@ overflow: visible;       /* IMPORTANT for big fan to show */
 }
 
 
-
-/* Light */
-
-/* 
-.light-img {
-    width: 170px;
-    height: auto;
-    filter: drop-shadow(0 0 20px #fbbf24);
+.canvas-box.canvas-hover {
+  border: 1px dashed #60a5fa;
+  background: radial-gradient(circle at center, #1f2937 0, #020617 70%);
 }
 
-
-.light-visual-wrapper {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.light-off-img,
-.light-base-img {
-    width: 260px;
-    pointer-events: none;
-    user-select: none;
-}
-
-.light-glow {
-    position: relative;
-    border-radius: 50%;
-    transition: all 0.25s ease-out;
-} */
 
 
 

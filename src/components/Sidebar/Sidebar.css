@@ -4,17 +4,21 @@
     border-right: 1px solid #1e293b;
     padding: 20px;
     height: 100vh;
-    }
-    
-    
-    .sidebar h5 {
+}
+
+
+.sidebar h5 {
     color: #9ca3af;
     font-size: 14px;
     margin-bottom: 15px;
-    }
-    
-    
-    .device-btn {
+}
+
+.sidebar-device {
+  display: block;
+}
+
+
+.device-btn {
     display: block;
     width: 100%;
     text-align: left;
@@ -26,24 +30,24 @@
     margin-bottom: 10px;
     cursor: pointer;
     transition: background-color 0.2s;
-    }
-    
-    
-    .device-btn:hover {
+}
+
+
+.device-btn:hover {
     background-color: #374151;
-    }
-    
-    
-    .preset-list {
+}
+
+
+.preset-list {
     margin-top: 30px;
-    }
-    
-    
-    .preset-item {
+}
+
+
+.preset-item {
     border: 1px solid #374151;
     border-radius: 6px;
     color: #9ca3af;
     padding: 8px;
     text-align: center;
     margin-bottom: 5px;
-    }
+}

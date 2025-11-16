@@ -2,9 +2,31 @@ import React, { useEffect, useState } from "react";
 import "./Canvas.css";
 import LightControls from "../Light/LightControls";
 import LightVisual from "../Light/LightVisual/LightVisual";
+import { useDrop } from "react-dnd";
+import { ItemTypes } from "../../ItemTypes";
 
-const Canvas = ({ activeDevice, onClear, onSave, fan, light}) => {
+// const Canvas = ({ activeDevice, onClear, onSave, fan, light}) => {
+    const Canvas = ({ activeDevice, onClear, onSave, fan, light, onDeviceDrop }) => {
+
     const [rotation, setRotation] = useState(0);
+
+
+    const [{ isOver, canDrop }, drop] = useDrop(() => ({
+        accept: ItemTypes.DEVICE,
+        drop: (item) => {
+            // item.deviceType আসবে Sidebar থেকে ("light" / "fan")
+            if (onDeviceDrop) {
+                onDeviceDrop(item.deviceType);
+            }
+        },
+        collect: (monitor) => ({
+            isOver: monitor.isOver(),
+            canDrop: monitor.canDrop(),
+        }),
+    }));
+
+
+
 
     useEffect(() => {
         let frame;
@@ -23,7 +45,7 @@ const Canvas = ({ activeDevice, onClear, onSave, fan, light}) => {
     return (
         <div className="canvas-section">
             <div className="canvas-title d-flex justify-content-between align-items-center">
-                <h4>Testing Canvas</h4>
+                <h4>Device Sandbox Simulator</h4>
 
                 <div>
                     <button className="btn btn-sm btn-secondary mr-2" onClick={onClear}>
@@ -36,7 +58,8 @@ const Canvas = ({ activeDevice, onClear, onSave, fan, light}) => {
                  </div>
             </div>
 
-            <div className="canvas-box">
+            {/* <div className="canvas-box"> */}
+            <div ref={drop} className={`canvas-box ${isOver && canDrop ? "canvas-hover" : ""}`} >
 
                 
                 {/* Light */}
