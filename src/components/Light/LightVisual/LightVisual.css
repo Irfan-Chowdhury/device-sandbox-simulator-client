@@ -1,0 +1,64 @@
+/* ========== 6th faze =============== */
+.light-visual-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* common image style */
+.bulb-img {
+    width: 80px;
+    height: 120px;
+    margin-bottom: 50px; 
+    user-select: none;
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* চাইলে off / on আলাদা করে টিউন করতে পারো */
+.bulb-off {
+    /* extra styles if needed */
+}
+
+.bulb-on {
+    /* extra styles if needed */
+}
+
+/* INNER GLOW PNG LAYER */
+.bulb-glow-layer {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.25s linear;
+    width: 0;              /* তোমার আগের কাস্টম সেটিং */
+    margin-bottom: 100px;  /* তোমার আগের কাস্টম সেটিং */
+}
+
+/* OUTER GLOW AREA */
+.outer-glow {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    z-index: 1;
+    transition: all 0.25s ease;
+    filter: blur(5px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

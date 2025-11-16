@@ -30,11 +30,7 @@ const LightControls = ({ light, setLight }) => {
             <label className="label mt-20">Color Temperature</label>
             <div className="temp-row">
                 {["warm", "neutral", "cool", "pink"].map((mode) => (
-                    // <div
-                    //     key={mode}
-                    //     className={`temp-box ${mode} ${light.color === mode ? "active" : ""} ${!isOn ? "dim" : ""}`}
-                    //     onClick={() => isOn && setLight({ ...light, color: mode })}
-                    // ></div>
+                   
                     <div
                         key={mode}
                         className={`temp-box ${mode} ${light.color === mode ? "active" : ""} ${!isOn ? "inactive-color" : ""}`}
@@ -48,26 +44,7 @@ const LightControls = ({ light, setLight }) => {
                 <label className="label">Brightness</label>
                 <span className="percent">{brightness}%</span>
             </div>
-
-            {/* <div className="brightness-bar">
-                <div 
-                    className="bar-fill" 
-                    style={{
-                        width: isOn ? `${brightness}%` : "0%",
-                    }}
-                ></div>
-
-                <input
-                    type="range"
-                    min="0"
-                    max="100"
-                    value={brightness}
-                    disabled={!isOn}
-                    onChange={(e) =>
-                        setLight({ ...light, brightness: Number(e.target.value) })
-                    }
-                />
-            </div> */}
+            
 
             <div className="brightness-bar">
                 {/* BLUE FILL ALWAYS VISIBLE */}

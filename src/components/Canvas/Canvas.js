@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Canvas.css";
 import LightControls from "../Light/LightControls";
+import LightVisual from "../Light/LightVisual/LightVisual";
 
-// const Canvas = ({ activeDevice, fan }) => {
-const Canvas = ({ activeDevice, onClear, onSave, fan, light }) => {
+const Canvas = ({ activeDevice, onClear, onSave, fan, light}) => {
     const [rotation, setRotation] = useState(0);
 
     useEffect(() => {
@@ -38,38 +38,21 @@ const Canvas = ({ activeDevice, onClear, onSave, fan, light }) => {
 
             <div className="canvas-box">
 
+                
+                {/* Light */}
                 {activeDevice === "light" && (
                     <div className="device-display">
-                        <img
-                            src="/light bulb.jpg"
-                            alt="Light Bulb"
-                            className="light-img"
+                        <LightVisual 
+                            power={light.power} 
+                            brightness={light.brightness}
+                            color={light.color} 
                         />
                     </div>
                 )}
 
-                {/* {activeDevice === "light" && (
-                    <LightControls 
-                        power={state.light.power}
-                        brightness={state.light.brightness}
-                        color={state.light.color}
-                    />
-                )} */}
-
-                {/* {activeDevice === "light" && (
-                    <LightControls 
-                        power={light.power}
-                        brightness={light.brightness}
-                        color={light.color}
-                    />
-                )} */}
-
-
-
 
 
                 {/* Fan */}
-
                 {activeDevice === "fan" && (
                     <div className="device-display">
                         <img

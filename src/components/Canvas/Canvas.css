@@ -15,17 +15,17 @@
 
 
 
-  .canvas-box {
-    flex: 1;
-    background-color: #111827;
-    border: 1px solid #374151;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;     /* keep fan centered */
-    position: relative;
-    overflow: visible;       /* IMPORTANT for big fan to show */
-  }
+.canvas-box {
+flex: 1;
+background-color: #111827;
+border: 1px solid #374151;
+border-radius: 10px;
+display: flex;
+justify-content: center;
+align-items: center;     /* keep fan centered */
+position: relative;
+overflow: visible;       /* IMPORTANT for big fan to show */
+}
   
 
 
@@ -34,6 +34,10 @@
 }
 
 
+
+/* Light */
+
+/* 
 .light-img {
     width: 170px;
     height: auto;
@@ -59,7 +63,13 @@
     position: relative;
     border-radius: 50%;
     transition: all 0.25s ease-out;
-}
+} */
+
+
+
+
+
+
 
 
 
