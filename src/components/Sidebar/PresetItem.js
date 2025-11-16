@@ -1,0 +1,32 @@
+import React from "react";
+import { useDrag } from "react-dnd";
+import { ItemTypes } from "../../ItemTypes";
+import "./Sidebar.css";
+
+
+// ✅ NEW: PresetItem
+const PresetItem = ({ preset }) => {
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: ItemTypes.PRESET,
+    item: { presetId: preset.id },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  }));
+
+  return (
+    <div
+      ref={drag}
+      className="preset-item"
+      style={{
+        opacity: isDragging ? 0.5 : 1,
+        cursor: "grab",
+      }}
+    >
+      <span className="preset-dot" />
+      <span className="preset-name">{preset.name}</span>
+    </div>
+  );
+};
+
+export default PresetItem;

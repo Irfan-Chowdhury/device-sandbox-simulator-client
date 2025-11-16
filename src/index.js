@@ -10,10 +10,9 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-
+  <DeviceProvider>
     <DndProvider backend={HTML5Backend}>
-        <DeviceProvider>
-    <App />
-  </DeviceProvider>
+      <App />
     </DndProvider>
+  </DeviceProvider>
 );

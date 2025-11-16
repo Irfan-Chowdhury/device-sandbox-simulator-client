@@ -3,9 +3,11 @@ import "./Sidebar.css";
 import { ItemTypes } from "../../ItemTypes";
 import { useDrag } from "react-dnd";
 import DeviceItem from "./DeviceItem";
+import PresetItem from "./PresetItem";
 
 
-const Sidebar = ({ onSelectLight, onSelectFan }) => {
+const Sidebar = ({ onSelectLight, onSelectFan, presets}) => {
+
     return (
         <div className="sidebar">
             <h5>Devices</h5>
@@ -24,11 +26,17 @@ const Sidebar = ({ onSelectLight, onSelectFan }) => {
                 className="device-btn"
             />
 
+            <hr className="sidebar-separator" />
 
-            <div className="preset-list">
-                <h5>Saved Presets</h5>
-                <div className="preset-item">Nothing added yet</div>
-            </div>
+            <h5 className="sidebar-subtitle">Saved Presets</h5>
+
+            {(!presets || presets.length === 0) && (
+                <p className="preset-empty">Nothing added yet</p>
+            )}
+
+            {presets.map((preset) => (
+                <PresetItem key={preset.id} preset={preset} />
+            ))}
         </div>
     );
 };

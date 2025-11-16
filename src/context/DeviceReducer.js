@@ -1,4 +1,20 @@
 export default function DeviceReducer(state, action) {
+
+    const initialState = {
+      activeDevice: "light",
+      light: {
+        power: false,
+        brightness: 0,
+        color: "warm",
+      },
+      fan: {
+        power: false,
+        speed: 0,
+      },
+      presets: [], // ✅ NEW
+    };
+
+
     switch (action.type) {
       // কোন ডিভাইস সিলেক্ট আছে (light / fan / null)
       case "SET_ACTIVE_DEVICE":
@@ -55,17 +71,35 @@ export default function DeviceReducer(state, action) {
   
       // PRESETS
       case "SAVE_PRESET":
+        // payload = { id, name, light, fan }
         return {
           ...state,
           presets: [...state.presets, action.payload],
         };
   
       // CLEAR
+      // case "CLEAR_DEVICE":
+      //   return {
+      //     ...state,
+      //     activeDevice: null,
+      //   };
+
       case "CLEAR_DEVICE":
+      return {
+        ...state,
+        light: { power: false, brightness: 0, color: "warm" },
+        fan: { power: false, speed: 0 },
+        activeDevice: null,
+      };
+      
+      case "APPLY_PRESET": {
+        // payload = { light, fan }
         return {
           ...state,
-          activeDevice: null,
+          light: action.payload.light,
+          fan: action.payload.fan,
         };
+      }
   
       default:
         return state;

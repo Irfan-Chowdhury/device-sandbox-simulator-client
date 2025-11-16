@@ -5,11 +5,15 @@ import Canvas from "./components/Canvas/Canvas";
 import LightControls from "./components/Light/LightControls";
 import FanControls from "./components/Fan/FanControls";
 import "./App.css";
+import PresetModal from "./components/Presets/PresetModal";
 
 function App() {
   const { state, dispatch } = useContext(DeviceContext);
 
+  const [presetModalOpen, setPresetModalOpen] = useState(false);
+
   const [activeDevice, setActiveDevice] = useState("fan");
+
   const handleSelectLight = () => {
     dispatch({ type: "SET_ACTIVE_DEVICE", payload: "light" });
   };
@@ -18,29 +22,57 @@ function App() {
     dispatch({ type: "SET_ACTIVE_DEVICE", payload: "fan" });
   };
 
+  const handleDeviceDrop = (deviceType) => {
+    dispatch({ type: "SET_ACTIVE_DEVICE", payload: deviceType });
+  };
+
+  const handlePresetDrop = (presetId) => {
+    const preset = state.presets.find((p) => p.id === presetId);
+    if (!preset) return;
+
+    dispatch({
+      type: "APPLY_PRESET",
+      payload: {
+        light: preset.light,
+        fan: preset.fan,
+      },
+    });
+
+    // optional: কোন device show হবে
+    // যদি preset এর fan.power বেশি থাকে, fan দেখাতে পারো — আপাতত light ধরলাম
+    dispatch({ type: "SET_ACTIVE_DEVICE", payload: "light" });
+  };
+
+
+
   const handleClear = () => {
     dispatch({ type: "CLEAR_DEVICE" });
   };
 
-  const handleSave = () => {
-    const preset = {
-      id: Date.now(),
-      light: state.light,
-      fan: state.fan,
-    };
-    dispatch({ type: "SAVE_PRESET", payload: preset });
-    alert("Preset Saved!");
+  const openSaveModal = () => {
+    setPresetModalOpen(true);
   };
 
-    // 👉 নতুন handler
-  const handleDeviceDrop = (deviceType) => {
-    dispatch({ type: "SET_ACTIVE_DEVICE", payload: deviceType });
+  const savePresetWithName = (name) => {
+      const preset = {
+          id: Date.now(),
+          name,
+          light: state.light,
+          fan: state.fan,
+      };
+
+      dispatch({ type: "SAVE_PRESET", payload: preset });
+      setPresetModalOpen(false);
   };
 
   return (
     <div className="d-flex app-root">
       {/* SIDEBAR */}
-      <Sidebar onSelectLight={handleSelectLight} onSelectFan={handleSelectFan} />
+      <Sidebar 
+        onSelectLight={handleSelectLight} 
+        onSelectFan={handleSelectFan} 
+        presets={state.presets}
+      />
 
       {/* MAIN AREA */}
       <div className="main flex-fill">
@@ -48,10 +80,11 @@ function App() {
         <Canvas
           activeDevice={state.activeDevice}
           onClear={handleClear}
-          onSave={handleSave}
+          onSave={openSaveModal}
           fan={state.fan}
           light={state.light}
           onDeviceDrop={handleDeviceDrop}
+          onPresetDrop={handlePresetDrop}
         />
 
 
@@ -81,6 +114,13 @@ function App() {
           />
         )}
       </div>
+
+
+      <PresetModal
+          isOpen={presetModalOpen}
+          onClose={() => setPresetModalOpen(false)}
+          onSave={savePresetWithName}
+      />
     </div>
   );
 }

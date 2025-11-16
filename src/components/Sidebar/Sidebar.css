@@ -6,6 +6,10 @@
     height: 100vh;
 }
 
+.sidebar-title {
+  color: #e5e7eb;
+  margin-bottom: 16px;
+}
 
 .sidebar h5 {
     color: #9ca3af;
@@ -18,7 +22,7 @@
 }
 
 
-.device-btn {
+/* .device-btn {
     display: block;
     width: 100%;
     text-align: left;
@@ -30,6 +34,20 @@
     margin-bottom: 10px;
     cursor: pointer;
     transition: background-color 0.2s;
+} */
+ 
+.sidebar-separator {
+  border-color: #1f2937;
+  margin: 18px 0;
+}
+
+.device-btn {
+  background: #111827;
+  color: #e5e7eb;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #1f2937;
+  margin-bottom: 8px;
 }
 
 
@@ -43,11 +61,49 @@
 }
 
 
-.preset-item {
+/* .preset-item {
     border: 1px solid #374151;
     border-radius: 6px;
     color: #9ca3af;
     padding: 8px;
     text-align: center;
     margin-bottom: 5px;
+} */
+
+
+.sidebar-subtitle {
+  color: #9ca3af;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.preset-empty {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.preset-item {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: #111827;
+  margin-bottom: 6px;
+}
+
+.preset-item:hover {
+  background: #1f2937;
+}
+
+.preset-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #10b981;
+  margin-right: 8px;
+}
+
+.preset-name {
+  color: #e5e7eb;
+  font-size: 13px;
 }
