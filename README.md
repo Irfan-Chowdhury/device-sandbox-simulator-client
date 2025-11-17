@@ -73,3 +73,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # packages
 npm install react-dnd react-dnd-html5-backend
+npm install axios
+

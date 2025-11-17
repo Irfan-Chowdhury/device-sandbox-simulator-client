@@ -107,3 +107,11 @@
   color: #e5e7eb;
   font-size: 13px;
 }
+
+.preset-delete-btn {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+}

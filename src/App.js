@@ -8,7 +8,7 @@ import "./App.css";
 import PresetModal from "./components/Presets/PresetModal";
 
 function App() {
-  const { state, dispatch } = useContext(DeviceContext);
+  const { state, dispatch, savePreset, deletePreset } = useContext(DeviceContext);
 
   const [presetModalOpen, setPresetModalOpen] = useState(false);
 
@@ -26,22 +26,74 @@ function App() {
     dispatch({ type: "SET_ACTIVE_DEVICE", payload: deviceType });
   };
 
+  // const handlePresetDrop = (presetId) => {
+  //   const preset = state.presets.find((p) => p.id === presetId);
+  //   if (!preset) return;
+
+  //   dispatch({
+  //     type: "APPLY_PRESET",
+  //     payload: {
+  //       light: preset.light,
+  //       fan: preset.fan,
+  //     },
+  //   });
+
+  //   // optional: কোন device show হবে
+  //   // যদি preset এর fan.power বেশি থাকে, fan দেখাতে পারো — আপাতত light ধরলাম
+  //   dispatch({ type: "SET_ACTIVE_DEVICE", payload: "light" });
+  // };
+
+
+  // const handlePresetDrop = (presetId) => {
+  //   const preset = state.presets.find((p) => p.id === presetId);
+  //   if (!preset) return;
+
+  //   // Apply preset data
+  //   dispatch({
+  //     type: "APPLY_PRESET",
+  //     payload: {
+  //       light: preset.devices_json.light,
+  //       fan: preset.devices_json.fan,
+  //     },
+  //   });
+
+  //   // Decide which device should be active
+  //   if (preset.devices_json.light.power) {
+  //     dispatch({ type: "SET_ACTIVE_DEVICE", payload: "light" });
+  //   } else if (preset.devices_json.fan.power) {
+  //     dispatch({ type: "SET_ACTIVE_DEVICE", payload: "fan" });
+  //   } else {
+  //     dispatch({ type: "SET_ACTIVE_DEVICE", payload: null });
+  //   }
+  // };
+
   const handlePresetDrop = (presetId) => {
+    
     const preset = state.presets.find((p) => p.id === presetId);
     if (!preset) return;
 
+    const data = preset.devices_json; // REAL data from DB
+
+    // apply settings
     dispatch({
       type: "APPLY_PRESET",
       payload: {
-        light: preset.light,
-        fan: preset.fan,
+        light: data.light,
+        fan: data.fan,
       },
     });
 
-    // optional: কোন device show হবে
-    // যদি preset এর fan.power বেশি থাকে, fan দেখাতে পারো — আপাতত light ধরলাম
-    dispatch({ type: "SET_ACTIVE_DEVICE", payload: "light" });
+    // now decide which device to show
+    if (data.fan.power) {
+      dispatch({ type: "SET_ACTIVE_DEVICE", payload: "fan" });
+    } else if (data.light.power) {
+      dispatch({ type: "SET_ACTIVE_DEVICE", payload: "light" });
+    } else {
+      dispatch({ type: "SET_ACTIVE_DEVICE", payload: null });
+    }
   };
+
+
 
 
 
@@ -53,30 +105,35 @@ function App() {
     setPresetModalOpen(true);
   };
 
-  const savePresetWithName = (name) => {
-      const preset = {
-          id: Date.now(),
-          name,
-          light: state.light,
-          fan: state.fan,
-      };
+  // const savePresetWithName = (name) => {
+  //     const preset = {
+  //         id: Date.now(),
+  //         name,
+  //         light: state.light,
+  //         fan: state.fan,
+  //     };
 
-      dispatch({ type: "SAVE_PRESET", payload: preset });
-      setPresetModalOpen(false);
+  //     dispatch({ type: "SAVE_PRESET", payload: preset });
+  //     setPresetModalOpen(false);
+  // };
+
+  const savePresetWithName = (name) => {
+    savePreset(name, state.light, state.fan); // backend POST
+    setPresetModalOpen(false);
   };
 
   return (
     <div className="d-flex app-root">
       {/* SIDEBAR */}
-      <Sidebar 
-        onSelectLight={handleSelectLight} 
-        onSelectFan={handleSelectFan} 
+      <Sidebar
+        onSelectLight={handleSelectLight}
+        onSelectFan={handleSelectFan}
         presets={state.presets}
       />
 
       {/* MAIN AREA */}
       <div className="main flex-fill">
-        
+
         <Canvas
           activeDevice={state.activeDevice}
           onClear={handleClear}
@@ -117,9 +174,9 @@ function App() {
 
 
       <PresetModal
-          isOpen={presetModalOpen}
-          onClose={() => setPresetModalOpen(false)}
-          onSave={savePresetWithName}
+        isOpen={presetModalOpen}
+        onClose={() => setPresetModalOpen(false)}
+        onSave={savePresetWithName}
       />
     </div>
   );
