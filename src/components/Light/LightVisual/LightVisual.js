@@ -21,7 +21,7 @@ const LightVisual = ({ power, brightness, color }) => {
         );
     }
 
-    const B = brightness / 50; // তোমার কাস্টম লজিক 그대로 রাখা হয়েছে
+    const B = brightness / 50; 
 
     // ⭐ COLOR MAPPING
     const colorMap = {
@@ -46,7 +46,6 @@ const LightVisual = ({ power, brightness, color }) => {
             <div
                 className="outer-glow"
                 style={{
-                    // boxShadow: `0 0 ${glowSize}px ${glowBlur}px rgba(255, 215, 157, ${B * 0.7})`,
                     boxShadow: `0 0 ${glowSize}px ${glowBlur}px rgba(${glowColor}, ${B * 0.7})`,
 
                     opacity: B,

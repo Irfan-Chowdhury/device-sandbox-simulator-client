@@ -1,4 +1,7 @@
-# **Device Sandbox Simulator**
+<div align='center'>
+
+# Device Sandbox Simulator
+</div>
 
 A full-stack interactive device simulation app built with **React**, **Laravel**, and **MySQL**, allowing users to drag & drop virtual devices, interact with their settings, and save reusable configuration presets.
 
@@ -22,13 +25,13 @@ This project demonstrates:
 
 ## 🚀 Live Demo
 #### **Client Part :** 
-  * **Live Demo :** [https://library-management-frontend-eta-umber.vercel.app](https://library-management-frontend-eta-umber.vercel.app)
-* **Repository :** [git@github.com:Irfan-Chowdhury/device-sandbox-simulator-client.git](git@github.com:Irfan-Chowdhury/device-sandbox-simulator-client.git)
+  * **Live Demo :** [https://device-sandbox-simulator-client.vercel.app](https://device-sandbox-simulator-client.vercel.app)
+  * **Repository :** [git@github.com:Irfan-Chowdhury/device-sandbox-simulator-client.git](git@github.com:Irfan-Chowdhury/device-sandbox-simulator-client.git)
 
 #### **Server Part :** 
 
   * **Live Link :** [https://bookingservice.irfandev.xyz](https://bookingservice.irfandev.xyz)
-* **Repository :** [https://github.com/Irfan-Chowdhury/device-sandbox-simulator](https://github.com/Irfan-Chowdhury/device-sandbox-simulator)
+  * **Repository :** [https://github.com/Irfan-Chowdhury/device-sandbox-simulator-server](https://github.com/Irfan-Chowdhury/device-sandbox-simulator-server)
 
 ---
 
@@ -89,33 +92,6 @@ Presets appear in the sidebar:
 
 ---
 
-### 🔹 **Backend Integration**
-
-Save, load, and delete presets via Laravel-powered API:
-
-* `/api/presets` (GET) — Fetch all presets
-* `/api/presets/{id}` (GET) — Load preset
-* `/api/presets` (POST) — Create preset
-* `/api/presets/{id}` (DELETE) — Delete preset
-
-Data saved in MySQL using this JSON structure:
-
-```json
-{
-  "light": {
-    "power": true,
-    "brightness": 75,
-    "color": "warm"
-  },
-  "fan": {
-    "power": false,
-    "speed": 0
-  }
-}
-```
-
----
-
 ## 🛠 **Tech Stack**
 
 ### **Frontend**
@@ -172,6 +148,69 @@ database/
 
 ---
 
+
+## 🔧 **Installation & Setup**
+
+### **Backend Setup**
+
+```sh
+git clone git@github.com:Irfan-Chowdhury/device-sandbox-simulator-server.git
+cd device-sandbox-simulator-server
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan serve
+```
+
+### **Frontend Setup**
+
+```sh
+git clone git@github.com:Irfan-Chowdhury/device-sandbox-simulator-client.git
+cd device-sandbox-simulator-client
+npm install
+npm start
+```
+
+Set API base URL in `src/api/api.js`:
+
+```js
+export const api = axios.create({
+  baseURL: "http://localhost:8000/api", //or, baseURL: https://bookingservice.irfandev.xyz/api
+});
+
+```
+
+---
+
+
+### 🔹 **Backend Integration**
+
+Save, load, and delete presets via Laravel-powered API:
+
+* `/api/presets` (GET) — Fetch all presets
+* `/api/presets/{id}` (GET) — Load preset
+* `/api/presets` (POST) — Create preset
+* `/api/presets/{id}` (DELETE) — Delete preset
+
+Data saved in MySQL using this JSON structure:
+
+```json
+{
+  "light": {
+    "power": true,
+    "brightness": 75,
+    "color": "warm"
+  },
+  "fan": {
+    "power": false,
+    "speed": 0
+  }
+}
+```
+
+---
+
 ## 🎯 **How It Works**
 
 ### 1️⃣ Drag Device → Drop on Canvas
@@ -192,50 +231,7 @@ Preset instantly restores device configuration.
 
 ---
 
-## 🔧 **Installation & Setup**
 
-### **Backend Setup**
-
-```sh
-git clone <repository-url>
-cd device-sandbox-backend
-composer install
-cp .env.example .env
-php artisan key:generate
-php artisan migrate
-php artisan serve
-```
-
-### **Frontend Setup**
-
-```sh
-git clone <repository-url>
-cd device-sandbox-frontend
-npm install
-npm start
-```
-
-Set API base URL in `src/api/api.js`:
-
-```js
-export const api = axios.create({
-  baseURL: "http://localhost:8000/api",
-});
-```
-
----
-
-## 📌 **Future Enhancements (Optional)**
-
-* Device position saving (drag within canvas)
-* Multiple devices placement
-* Rename presets
-* Preset thumbnail preview
-* Authentication for user-based preset storage
-* Export/Import preset files
-* Cloud sync support
-
----
 
 ## 📝 **Conclusion**
 

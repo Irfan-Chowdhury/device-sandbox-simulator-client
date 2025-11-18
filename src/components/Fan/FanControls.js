@@ -2,7 +2,6 @@ import React from "react";
 import "./FanControls.css";
 
 const FanControls = ({ fan, setFan }) => {
-    //  UPDATE SLIDER FILL COLOR (Correct spot)
   document.documentElement.style.setProperty("--value", fan.speed + "%");
   document.documentElement.style.setProperty("--remain", 100 - fan.speed + "%");
 
@@ -32,16 +31,6 @@ const FanControls = ({ fan, setFan }) => {
       </div>
 
       {/* SLIDER */}
-      {/* <input
-        type="range"
-        className="styled-slider"
-        min="0"
-        max="100"
-        value={fan.speed}
-        onChange={(e) =>
-          setFan({ ...fan, speed: Number(e.target.value) })
-        }
-      /> */}
 
       <div className="fan-slider-wrapper">
         <div className="fan-slider-track">
