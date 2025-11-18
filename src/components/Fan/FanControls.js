@@ -32,7 +32,7 @@ const FanControls = ({ fan, setFan }) => {
       </div>
 
       {/* SLIDER */}
-      <input
+      {/* <input
         type="range"
         className="styled-slider"
         min="0"
@@ -41,7 +41,29 @@ const FanControls = ({ fan, setFan }) => {
         onChange={(e) =>
           setFan({ ...fan, speed: Number(e.target.value) })
         }
-      />
+      /> */}
+
+      <div className="fan-slider-wrapper">
+        <div className="fan-slider-track">
+          <div
+            className="fan-slider-fill"
+            style={{ width: `${fan.speed}%` }}
+          ></div>
+        </div>
+
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value={fan.speed}
+          className="fan-slider-input"
+          onChange={(e) =>
+            setFan({ ...fan, speed: Number(e.target.value) })
+          }
+        />
+
+      </div>
+
     </div>
   );
 };

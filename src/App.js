@@ -8,11 +8,9 @@ import "./App.css";
 import PresetModal from "./components/Presets/PresetModal";
 
 function App() {
-  const { state, dispatch, savePreset, deletePreset } = useContext(DeviceContext);
+  const { state, dispatch, savePreset } = useContext(DeviceContext);
 
   const [presetModalOpen, setPresetModalOpen] = useState(false);
-
-  const [activeDevice, setActiveDevice] = useState("fan");
 
   const handleSelectLight = () => {
     dispatch({ type: "SET_ACTIVE_DEVICE", payload: "light" });

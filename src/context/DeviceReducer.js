@@ -1,20 +1,5 @@
 export default function DeviceReducer(state, action) {
 
-    const initialState = {
-      activeDevice: "light",
-      light: {
-        power: false,
-        brightness: 0,
-        color: "warm",
-      },
-      fan: {
-        power: false,
-        speed: 0,
-      },
-      presets: [], // ✅ NEW
-    };
-
-
     switch (action.type) {
       case "SET_ACTIVE_DEVICE":
         return {

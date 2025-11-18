@@ -2,23 +2,6 @@ import React, { createContext, useEffect, useReducer } from "react";
 import DeviceReducer from "./DeviceReducer";
 import { api } from "../api/api";
 
-// export const DeviceContext = createContext();
-
-// Initial global state
-// const initialState = {
-//     activeDevice: null, // 'light' | 'fan' | null
-//     light: {
-//         power: true,
-//         brightness: 70,
-//         color: "warm",
-//     },
-//     fan: {
-//         power: true,
-//         speed: 60,
-//     },
-//     presets: [],
-// };
-
 const initialState = {
     activeDevice: null,
     light: {

@@ -4,12 +4,6 @@ import "./LightControls.css";
 const LightControls = ({ light, setLight }) => {
     const isOn = light.power;
     const brightness = light.brightness;
-    const tempColorMap = {
-        warm: "#fbbf24",
-        neutral: "#f3f4f6",
-        cool: "#60a5fa",
-        pink: "#f472b6"
-    };
     
     return (
         <div className="light-panel">

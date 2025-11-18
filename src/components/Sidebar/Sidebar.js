@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 import "./Sidebar.css";
-import { ItemTypes } from "../../ItemTypes";
-import { useDrag } from "react-dnd";
 import DeviceItem from "./DeviceItem";
 import PresetItem from "./PresetItem";
 import { DeviceContext } from "../../context/DeviceContext";
@@ -40,15 +38,6 @@ const Sidebar = ({ onSelectLight, onSelectFan, presets}) => {
                 <PresetItem key={preset.id} preset={preset} deletePreset={deletePreset} />
             ))}
             
-            {/* <button
-                className="preset-delete-btn"
-                onClick={(e) => {
-                        e.stopPropagation();
-                        deletePreset(e.id);
-                    }}
-                >
-                ✕
-            </button> */}
         </div>
     );
 };

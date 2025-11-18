@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Canvas.css";
-import LightControls from "../Light/LightControls";
 import LightVisual from "../Light/LightVisual/LightVisual";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../../ItemTypes";
