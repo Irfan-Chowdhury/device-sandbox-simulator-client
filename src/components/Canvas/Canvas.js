@@ -8,19 +8,6 @@ const Canvas = ({ activeDevice, onClear, onSave, fan, light, onDeviceDrop, onPre
 
     const [rotation, setRotation] = useState(0);
 
-    // const [{ isOver, canDrop }, drop] = useDrop(() => ({
-    //     accept: [ItemTypes.DEVICE, ItemTypes.PRESET],  // FIXED
-    //     drop: (item) => {
-    //         if (item.deviceType) onDeviceDrop(item.deviceType);
-    //         if (item.presetId) onPresetDrop(item.presetId);
-    //     },
-    //     collect: (monitor) => ({
-    //         isOver: monitor.isOver(),
-    //         canDrop: monitor.canDrop(),
-    //     }),
-    // }));
-
-
     const [{ isOver, canDrop }, drop] = useDrop(() => ({
             // accept: ["PRESET", "DEVICE"],
             accept: [ItemTypes.DEVICE, ItemTypes.PRESET],
@@ -38,10 +25,6 @@ const Canvas = ({ activeDevice, onClear, onSave, fan, light, onDeviceDrop, onPre
         }),
         [onDeviceDrop, onPresetDrop]
     );
-
-
-
-
 
     useEffect(() => {
         let frame;
@@ -73,9 +56,7 @@ const Canvas = ({ activeDevice, onClear, onSave, fan, light, onDeviceDrop, onPre
                 </div>
             </div>
 
-            {/* <div className="canvas-box"> */}
             <div ref={drop} className={`canvas-box ${isOver && canDrop ? "canvas-hover" : ""}`} style={{ pointerEvents: "auto" }} >
-            {/* <div ref={drop} className={`canvas-box ${isOver ? "canvas-hover" : ""}`} > */}
 
 
                 {/* Light */}

@@ -12,6 +12,14 @@ function App() {
 
   const [presetModalOpen, setPresetModalOpen] = useState(false);
 
+  const [toast, setToast] = useState(null);
+
+  const showToast = (msg) => {
+      setToast(msg);
+      setTimeout(() => setToast(null), 2000);
+  };
+
+
   const handleSelectLight = () => {
     dispatch({ type: "SET_ACTIVE_DEVICE", payload: "light" });
   };
@@ -79,6 +87,14 @@ function App() {
       {/* MAIN AREA */}
       <div className="main flex-fill">
 
+        {toast && (
+          <div className="global-toast">
+            <span className="toast-icon">✔</span>
+            {toast}
+          </div>
+        )}
+
+
         <Canvas
           activeDevice={state.activeDevice}
           onClear={handleClear}
@@ -122,6 +138,7 @@ function App() {
         isOpen={presetModalOpen}
         onClose={() => setPresetModalOpen(false)}
         onSave={savePresetWithName}
+        showToast={showToast}
       />
     </div>
   );

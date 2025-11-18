@@ -14,14 +14,7 @@ const PresetItem = ({ preset, deletePreset }) => {
   }));
 
   return (
-    // <div
-    //   ref={drag}
-    //   className="preset-item"
-    //   style={{
-    //     opacity: isDragging ? 0.5 : 1,
-    //     cursor: "grab",
-    //   }}
-    // >
+
     <div
       ref={drag}
       className="preset-item"
@@ -35,15 +28,6 @@ const PresetItem = ({ preset, deletePreset }) => {
       <span className="preset-dot" />
       <span className="preset-name">{preset.name}</span>
 
-      {/* <button
-        className="preset-delete-btn"
-        onClick={(e) => {
-          e.stopPropagation();
-          deletePreset(preset.id);
-        }}
-      >
-        ✕
-      </button> */}
 
       <button
         className="preset-delete-btn"
