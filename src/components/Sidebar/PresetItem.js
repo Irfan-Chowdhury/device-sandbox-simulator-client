@@ -14,18 +14,28 @@ const PresetItem = ({ preset, deletePreset }) => {
   }));
 
   return (
+    // <div
+    //   ref={drag}
+    //   className="preset-item"
+    //   style={{
+    //     opacity: isDragging ? 0.5 : 1,
+    //     cursor: "grab",
+    //   }}
+    // >
     <div
       ref={drag}
       className="preset-item"
       style={{
         opacity: isDragging ? 0.5 : 1,
         cursor: "grab",
+        pointerEvents: "auto" // Full row draggable
       }}
     >
+
       <span className="preset-dot" />
       <span className="preset-name">{preset.name}</span>
 
-      <button
+      {/* <button
         className="preset-delete-btn"
         onClick={(e) => {
           e.stopPropagation();
@@ -33,7 +43,20 @@ const PresetItem = ({ preset, deletePreset }) => {
         }}
       >
         ✕
+      </button> */}
+
+      <button
+        className="preset-delete-btn"
+        onClick={(e) => {
+          e.stopPropagation();
+          e.preventDefault();   // IMPORTANT
+          deletePreset(preset.id);
+        }}
+        style={{ pointerEvents: "auto" }}
+      >
+        ✕
       </button>
+
     </div>
   );
 };

@@ -26,47 +26,6 @@ function App() {
     dispatch({ type: "SET_ACTIVE_DEVICE", payload: deviceType });
   };
 
-  // const handlePresetDrop = (presetId) => {
-  //   const preset = state.presets.find((p) => p.id === presetId);
-  //   if (!preset) return;
-
-  //   dispatch({
-  //     type: "APPLY_PRESET",
-  //     payload: {
-  //       light: preset.light,
-  //       fan: preset.fan,
-  //     },
-  //   });
-
-  //   // optional: কোন device show হবে
-  //   // যদি preset এর fan.power বেশি থাকে, fan দেখাতে পারো — আপাতত light ধরলাম
-  //   dispatch({ type: "SET_ACTIVE_DEVICE", payload: "light" });
-  // };
-
-
-  // const handlePresetDrop = (presetId) => {
-  //   const preset = state.presets.find((p) => p.id === presetId);
-  //   if (!preset) return;
-
-  //   // Apply preset data
-  //   dispatch({
-  //     type: "APPLY_PRESET",
-  //     payload: {
-  //       light: preset.devices_json.light,
-  //       fan: preset.devices_json.fan,
-  //     },
-  //   });
-
-  //   // Decide which device should be active
-  //   if (preset.devices_json.light.power) {
-  //     dispatch({ type: "SET_ACTIVE_DEVICE", payload: "light" });
-  //   } else if (preset.devices_json.fan.power) {
-  //     dispatch({ type: "SET_ACTIVE_DEVICE", payload: "fan" });
-  //   } else {
-  //     dispatch({ type: "SET_ACTIVE_DEVICE", payload: null });
-  //   }
-  // };
-
   const handlePresetDrop = (presetId) => {
     
     const preset = state.presets.find((p) => p.id === presetId);
@@ -104,18 +63,6 @@ function App() {
   const openSaveModal = () => {
     setPresetModalOpen(true);
   };
-
-  // const savePresetWithName = (name) => {
-  //     const preset = {
-  //         id: Date.now(),
-  //         name,
-  //         light: state.light,
-  //         fan: state.fan,
-  //     };
-
-  //     dispatch({ type: "SAVE_PRESET", payload: preset });
-  //     setPresetModalOpen(false);
-  // };
 
   const savePresetWithName = (name) => {
     savePreset(name, state.light, state.fan); // backend POST

@@ -9,26 +9,11 @@ const Canvas = ({ activeDevice, onClear, onSave, fan, light, onDeviceDrop, onPre
 
     const [rotation, setRotation] = useState(0);
 
-
-//     const [{ isOver }, drop] = useDrop(() => ({
-//   accept: ["PRESET", "DEVICE"],
-//   drop: (item) => {
-//     console.log("DROP EVENT:", item);
-//   },
-//   collect: monitor => ({
-//     isOver: monitor.isOver(),
-//   })
-// }));
-
     // const [{ isOver, canDrop }, drop] = useDrop(() => ({
-    //     accept: [ItemTypes.DEVICE, ItemTypes.PRESET],
+    //     accept: [ItemTypes.DEVICE, ItemTypes.PRESET],  // FIXED
     //     drop: (item) => {
-    //         if (item.deviceType && onDeviceDrop) {
-    //             onDeviceDrop(item.deviceType);
-    //         }
-    //         if (item.presetId && onPresetDrop) {
-    //             onPresetDrop(item.presetId);
-    //         }
+    //         if (item.deviceType) onDeviceDrop(item.deviceType);
+    //         if (item.presetId) onPresetDrop(item.presetId);
     //     },
     //     collect: (monitor) => ({
     //         isOver: monitor.isOver(),
@@ -36,17 +21,25 @@ const Canvas = ({ activeDevice, onClear, onSave, fan, light, onDeviceDrop, onPre
     //     }),
     // }));
 
+
     const [{ isOver, canDrop }, drop] = useDrop(() => ({
-        accept: [ItemTypes.DEVICE, ItemTypes.PRESET],  // FIXED
-        drop: (item) => {
-            if (item.deviceType) onDeviceDrop(item.deviceType);
-            if (item.presetId) onPresetDrop(item.presetId);
-        },
-        collect: (monitor) => ({
-            isOver: monitor.isOver(),
-            canDrop: monitor.canDrop(),
+            // accept: ["PRESET", "DEVICE"],
+            accept: [ItemTypes.DEVICE, ItemTypes.PRESET],
+            drop: (item) => {
+                console.log("DROP EVENT:", item);
+                if (item.deviceType) 
+                    onDeviceDrop(item.deviceType);
+                if (item.presetId) 
+                    onPresetDrop(item.presetId);
+            },
+            collect: (monitor) => ({
+                isOver: monitor.isOver(),
+                canDrop: monitor.canDrop(),
+            }),
         }),
-    }));
+        [onDeviceDrop, onPresetDrop]
+    );
+
 
 
 
@@ -82,7 +75,7 @@ const Canvas = ({ activeDevice, onClear, onSave, fan, light, onDeviceDrop, onPre
             </div>
 
             {/* <div className="canvas-box"> */}
-            <div ref={drop} className={`canvas-box ${isOver && canDrop ? "canvas-hover" : ""}`} >
+            <div ref={drop} className={`canvas-box ${isOver && canDrop ? "canvas-hover" : ""}`} style={{ pointerEvents: "auto" }} >
             {/* <div ref={drop} className={`canvas-box ${isOver ? "canvas-hover" : ""}`} > */}
 
 

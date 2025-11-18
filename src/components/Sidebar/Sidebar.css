@@ -82,14 +82,21 @@
   font-size: 12px;
 }
 
-.preset-item {
+/* .preset-item {
   display: flex;
   align-items: center;
   padding: 6px 8px;
   border-radius: 8px;
   background: #111827;
   margin-bottom: 6px;
+} */
+
+.preset-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
+
 
 .preset-item:hover {
   background: #1f2937;

@@ -1,36 +1,39 @@
 .canvas-section {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    background-color: #0f172a; /* whole center background */
-    height: 100vh;
-  }
-  
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #0f172a;
+  /* whole center background */
+  height: 100vh;
+}
+
 
 
 .canvas-title h4 {
-    color: #9ca3af;
+  color: #9ca3af;
 }
 
 
 
 .canvas-box {
-flex: 1;
-background-color: #111827;
-border: 1px solid #374151;
-border-radius: 10px;
-display: flex;
-justify-content: center;
-align-items: center;     /* keep fan centered */
-position: relative;
-overflow: visible;       /* IMPORTANT for big fan to show */
+  flex: 1;
+  background-color: #111827;
+  border: 1px solid #374151;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* keep fan centered */
+  position: relative;
+  overflow: visible;
+  /* IMPORTANT for big fan to show */
 }
-  
+
 
 
 .device-display {
-    text-align: center;
+  text-align: center;
 }
 
 .canvas-box.canvas-hover {
@@ -43,6 +46,11 @@ overflow: visible;       /* IMPORTANT for big fan to show */
   font-size: 14px;
 }
 
+.canvas-box * {
+  pointer-events: none;
+  /* IMPORTANT FIX */
+}
+
 
 
 
@@ -53,53 +61,53 @@ overflow: visible;       /* IMPORTANT for big fan to show */
 
 /* FAN STYLING */
 .fan {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    border: 5px solid #374151;
-    position: relative;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 5px solid #374151;
+  position: relative;
 }
 
 
 .blade {
-    position: absolute;
-    width: 10px;
-    height: 60px;
-    background-color: #93c5fd;
-    border-radius: 4px;
-    transform-origin: bottom center;
+  position: absolute;
+  width: 10px;
+  height: 60px;
+  background-color: #93c5fd;
+  border-radius: 4px;
+  transform-origin: bottom center;
 }
 
 
 .blade:nth-child(1) {
-    transform: rotate(0deg);
+  transform: rotate(0deg);
 }
 
 
 .blade:nth-child(2) {
-    transform: rotate(120deg);
+  transform: rotate(120deg);
 }
 
 
 .blade:nth-child(3) {
-    transform: rotate(240deg);
+  transform: rotate(240deg);
 }
 
 
 
-  /* Rotation Animation */
-  .spin {
-    animation-name: rotateFan;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+/* Rotation Animation */
+.spin {
+  animation-name: rotateFan;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rotateFan {
+  from {
+    transform: rotate(0deg);
   }
-  
-  @keyframes rotateFan {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+
+  to {
+    transform: rotate(360deg);
   }
-  
+}
