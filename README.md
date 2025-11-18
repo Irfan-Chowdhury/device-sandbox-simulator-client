@@ -25,8 +25,9 @@ This project demonstrates:
 
 ## 🚀 Live Demo
 #### **Client Part :** 
+
   * **Live Demo :** [https://device-sandbox-simulator-client.vercel.app](https://device-sandbox-simulator-client.vercel.app)
-  * **Repository :** [git@github.com:Irfan-Chowdhury/device-sandbox-simulator-client.git](git@github.com:Irfan-Chowdhury/device-sandbox-simulator-client.git)
+  * **Repository :** [https://github.com/Irfan-Chowdhury/device-sandbox-simulator-client](https://github.com/Irfan-Chowdhury/device-sandbox-simulator-client)
 
 #### **Server Part :** 
 
